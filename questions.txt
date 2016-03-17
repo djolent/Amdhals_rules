@@ -1,0 +1,25 @@
+Questions to cover in the article:
+1. What are Amdhal's rules, why do they matter, and (why) are they still valid today? 
+   Here we dump the update on historic data.
+
+2. What are the most cost-effective ways to increase performance of computer systems once all the scaling stops?
+   There is a nice Economist article on weird and expensive technologies:
+   http://www.economist.com/technology-quarterly/2016-03-12/after-moores-law
+   But I think we could focus on least intruisive techniques:
+    a) Scale-out approach -- power limited
+    b) specialization (GPUs could be covered here)
+    c) integration (including near-memory processing, hw-sw codesign, ...)
+    d) approximation at the HW/system level (computation + storage + memory + networking)
+    e) neuromorphic stuff
+ 
+   How does each of these impact the Amdhal's rules?
+
+3. Assuming different system components continue scaling at different rates (or just stop scaling at different times) 
+ what will be the most cost-effective way to build a balanced system?
+Lets guesstimate how the scaling of different components will be affected and see what we can do about it.
+
+IMO, memories will die first. 3D can push it for the capacity for a while, but it's still limited by power and power delivery. 
+The thing is that once the scaling stops the performance of computation can still improve through specialization and things despite the absence of technology scaling,
+but there is nothing equivalent to improve on the memory side. Cost-wise, this means that computation will become increasingly cheaper, but memory will be more expensive. How would one build a system where a bit of memory is 1000x more expensive than it is today? Can we make an argument for near-memory processing here, in the sense that a piece of memory that cannot grow will have increasingly more computation over time?
+In this scenario, the computation is cheap and can be replicated next to each data partition. How about disaggregated memory?
+
