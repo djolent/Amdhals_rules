@@ -1,3 +1,50 @@
+Moore's law seems to be ending. What is precisely going to end?
+
+Technology scaling curves for many computer system components and their parameters directly follow the rate at which density of integrated circuits (ICs)improves over time. Examples include memory capacity and compute density. Other parameters, such as disk bandwidth or memory latency, have been following their own curves, benefiting from IC scaling to a much lesser extent. 
+
+The death of Moore's law will not put an abrupt end to all technological improvements in computer systems. Instead, it will hit different types of ICs at different timesdepending on how far each IC is from its physical limits. Certain scaling trends may stop abruptly, whereas the others may slowely fade away. Thus, the end of Moore's law will likely affect every parameter of the system in a unique way and with different cost implications, changing the 50-year old balance of resources in unpredictable ways. We will soon have to deal with many new questions such as how to design a system if memory is 1000x more expensive (relative to the other components) then it is today? What is the optimal system design if network latency increases by 10000x? In general, how to design a balanced computer system with very differently (i.e., randomly) proportioned resources and parameters? 
+
+Future computer system designers will have to deal with increasingly unknown technology scaling curves. In practice this means dealing with random system parameters with constantly changing trade-offs regarding resource utilization. What trade-offs could emerge?
+
+Parameters to consider:
+- memory/storage density, latency, device bandwidth, power/bit
+- network latency, energy/bit, bandwidth between between all components, also within components
+- compute density
+- single-threaded performance
+
+Trade-offs:
+1. compute vs. memory capacity
+   a) standard time-space trade-off fits, quite a few algorithms (and data structures) depend on this
+   b) computation vs. memoization 
+   c) recompute vs. cash results
+   d) data replication (and cashing) - in case memory is cheap
+   e) compute replication, i.e. near-memory processing - if compute is cheap (hardware-wise), it can be replicated next to each data partition.
+   f) compression -- if compute is cheap (operationally) and memory is pricy
+   g) disaggregation of memory and compute resources?
+
+Once the scaling stops, the performance of computation can still improve through specialization. However, there is nothing equivalent to improve on the memory side (except for compression, but to a much lesser extent), which may suggest that memory will be a more expensive resource. 
+
+ 
+2. bandwidth vs. memory (storage) capacity
+  a) if memory is cheap and communication is costly --> heavy cashing and replication
+  b) otherwise ?
+  c) This is an existing problem in DRAM. GPUs opt for bandwidth, servers for capacity
+
+3. Capacity vs. latency
+   a) This is the trade-off that caches go after. So, caching, if memory is plentiful
+   b) otherwise communicate
+
+
+4. Compute vs. latency
+    a) Indirection?
+
+5. Compute vs. bandwidth
+ 
+
+5. Bandwidth vs. latency
+	a) This should come down to a well-known trade-off between the two
+
+        
 Questions to cover in the article:
 1. What are Amdhal's rules, why do they matter, and (why) are they still valid today? 
    Here we dump the update on historic data.
@@ -17,9 +64,4 @@ Questions to cover in the article:
 3. Assuming different system components continue scaling at different rates (or just stop scaling at different times) 
  what will be the most cost-effective way to build a balanced system?
 Lets guesstimate how the scaling of different components will be affected and see what we can do about it.
-
-IMO, memories will die first. 3D can push it for the capacity for a while, but it's still limited by power and power delivery. 
-The thing is that once the scaling stops the performance of computation can still improve through specialization and things despite the absence of technology scaling,
-but there is nothing equivalent to improve on the memory side. Cost-wise, this means that computation will become increasingly cheaper, but memory will be more expensive. How would one build a system where a bit of memory is 1000x more expensive than it is today? Can we make an argument for near-memory processing here, in the sense that a piece of memory that cannot grow will have increasingly more computation over time?
-In this scenario, the computation is cheap and can be replicated next to each data partition. How about disaggregated memory?
 
