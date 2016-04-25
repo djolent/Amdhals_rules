@@ -1,0 +1,14 @@
+\section{Introduction}
+
+Many readers will be familiar with Amdahl's Law~\cite{FIXME}, which famously states that no matter how fast you make the parrallelizable portion of your application, the sequential bits left behind will limit any real performance improvement.  What is perhaps less well known is Gene Amdahl made a host of such insightful observations while the chief architect of the IBM System/360.  These observations have become known as Amdahl's Rules of Thumb for a Balanced System~\cite{FIXME}.  These rules of thumb tell computer engineers such useful things as how much processor performance to provide relative to I/O bandwidth.  What is remarkable is 50 years later they are, to first order, true today.  If you were lucky enough to sit down with Gene in the mid-1960's, the guidance he would have provided would carry you through to this day.
+
+Interestingly, the origin of these rules of thumb is partially obscured by time.  Gene himself didn't publish a seminal paper summarizing them.  What we have left is an oral tradition~\cite{Amdahl-UMN-Interview} and a collection of short observations~\cite{FIXME}.  In part one of this paper we'll explore this history and try and pull together in one place all of these rules of thumb and their origin.
+
+Part two of this work looks at the question, are these rules of thumb still valid today?  We are not the first researchers who have wondered this.  Jim Gray and Prashant Shenoy posed a similar question in 1999.  With only ``slight revision'' they found that for database systems they did indeed hold.  In our work we broaden the range of systems to include mobile devices, servers more generally, and GPUs.  For the most part, we find Amdahl's rules still guide computing design, with a few notable exceptions.
+ 
+Finally Part three of this work poses the question, what does Amdhal's rules of thumb tell us about the future of computing?  Given the prescient nature of them it is possible to look ten to twenty years out and predict the design of computer systems.  But just as interesting for researchers is what sorts of machines could be built that are far off the mainstream.  In some ways Amdahl's rules of thumb tell us what sorts of machines execute our existing software well.  Understanding the capabilities of machines of a very different ilk is intriguing area of research.
+
+
+
+% Amdahl67: Validity of the Single Processor Approach to Achieving Large-Scale Computing Capabilities
+
