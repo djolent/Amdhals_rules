@@ -21,11 +21,10 @@ The success of Moore's law has certainly been instrumental in maintaining the ba
 
 It is unlikely that the end of Moore's law will put an abrupt end to all technological improvements in computer systems. Instead, it will hit different types of circuits at different times, depending on how far each material is from its physical limits. Certain scaling trends may stop abruptly, whereas the others may slowly fade away, possibly at very different paces. Thus, the end of Moore's law will likely affect every parameter of the system in a unique way and with different cost implications, changing the 50-year old balance of resources in unpredictable ways. The unpredictability of this process will be further exacerbated by complex interaction between different system parameters. As a result, we will soon have to deal with many new questions, such as how to design a system if memory was 1000x more expensive (relative to the other components) than it is today? Or what is the optimal system design if certain communication latencies were to increase by 10000x? In general, how to design a balanced computer system with very differently, and in the worst case, randomly proportioned resources and parameters? In some ways Amdahl's rules of thumb tell us what sorts of machines execute our existing software well.  Understanding the capabilities of machines of a very different ilk is intriguing area of research.
 
-Future computer system designers will have to deal with increasingly unknown technology scaling curves. In practice this means dealing with almost random system parameters and constantly changing trade-offs regarding the use of resources. 
+The good news is that we can probably break down the problem by looking at individual trade-offs between pairs of parameters. For instance, we may be able to return the system into balance if we find a way to trade one resource for another, such as computational power for memory capacity etc. 
 
-The good news is that we can probably break down the problem by looking at individual trade-offs between pairs of parameters. What are the trade-offs that could emerge? 
 
-Parameters to consider:
+Resources to consider:
 - memory/storage density, latency, device bandwidth, power/bit
 - network latency, energy/bit, bandwidth between all components, also within components
 - compute density
