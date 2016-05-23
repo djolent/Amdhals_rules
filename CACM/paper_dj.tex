@@ -1,0 +1,62 @@
+---------------------------------------------------------------------------------------
+Abstract
+---------------------------------------------------------------------------------------
+
+Many readers will be familiar with Amdahl's Law~\cite{FIXME}, which famously states that no matter how fast you make the parrallelizable portion of your application, the sequential bits left behind will limit any real performance improvement.  What is perhaps less well known is that Gene Amdahl made a host of such insightful observations while the chief architect of the IBM System/360. These observations have become known as Amdahl's Rules of Thumb for a Balanced System~\cite{FIXME}.  These rules of thumb tell computer engineers such useful things as how much I/O bandwidth to provide relative to processor performance. What is remarkable is 50 years later they are, to first order, true today. If you were lucky enough to sit down with Gene in the mid-1960's, the guidance he would have provided would carry you through to the present day.
+
+Interestingly, the origin of Amdahl's rules of thumb is partially obscured by time -- Amdahl himself did not publish a seminal paper summarizing them.  What we have left is an oral tradition~\cite{Amdahl-UMN-Interview} and a collection of short observations~\cite{FIXME}. In part one of this paper we'll explore this history and try to pull together in one place all of these rules of thumb and their origins, and explain their significance.
+
+Part two of this work looks at the question: "Are Amdhal's rules of thumb still valid today and why?". We are not the first researchers who have wondered this; Jim Gray and Prashant Shenoy posed a similar question in 1999~\cite{FIXME}. With only ``slight revision'' they found that for database systems the rules of thumb did indeed hold. In our work we broaden the range of systems to include mobile devices, servers more generally, and GPUs. With a few notable exceptions, we find that Amdahl's rules continue to describe computer system designs with striking precision, due to two main reasons. On the software side, the relative demands for different computer system resources have largely stayed the same despite the overall system growth. On the hardware side, Moore's law has consistently provided similar density improvements for most of the system components, allowing them to keep up with each other in terms of performance and cost. The demand/supply balance of resources captured by Amdhal's rules of thumb has therefore not changed much.
+
+Given the strong relationship between Amdhal's rules and Moore's law and the expected end of the latter, what will be the fate of Amdhal's rules? Part three of this work looks at various hypothetical post Moore's law scenarios and severe disbalances between different system resources they introduce. Instead of trying to predict the likely direction that technology curves may follow, we raise questions such as "How to build a balanced system if memory was 1000x more expensive?" and explore the answers. As a first step towards dealing with suboptimal and unpredictable technology scalings, we suggest a design framework that seeks to return any given system into balance. Our framework includes a set of well-known techniques that trade one resource of a disbalanced system for another in a systematic way so as to optimize the system for a given metric. 
+
+% Amdahl67: Validity of the Single Processor Approach to Achieving Large-Scale Computing Capabilities
+
+
+---------------------------------------------------------------------------------------
+Part 3.
+---------------------------------------------------------------------------------------
+
+The success of Moore's law has certainly been instrumental in maintaining the balance and predictability in computer systems for decades. However, the relationship between Moore's law and the Amdhal's rules of thumb for a balanced system is a more complex one. For some computer system parameters, the scaling curves by definition follow the rate at which density of the underlying technology improves over time. Examples include compute density and memory capacity. Other parameters, such as disk bandwidth or memory latency, include several components that depend on multiple factors and scale in a more complex way, benefiting from physical scaling to a much lesser extent. The end of Moore's law will probably have vastly different implications on different system parameters. 
+
+It is unlikely that the end of Moore's law will put an abrupt end to all technological improvements in computer systems. Instead, it will hit different types of circuits at different times, depending on how far each material is from its physical limits. Certain scaling trends may stop abruptly, whereas the others may slowly fade away, possibly at very different paces. Thus, the end of Moore's law will likely affect every parameter of the system in a unique way and with different cost implications, changing the 50-year old balance of resources in unpredictable ways. The unpredictability of this process will be further exacerbated by complex interaction between different system parameters. As a result, we will soon have to deal with many new questions, such as how to design a system if memory was 1000x more expensive (relative to the other components) than it is today? Or what is the optimal system design if certain communication latencies were to increase by 10000x? In general, how to design a balanced computer system with very differently, and in the worst case, randomly proportioned resources and parameters? In some ways Amdahl's rules of thumb tell us what sorts of machines execute our existing software well.  Understanding the capabilities of machines of a very different ilk is intriguing area of research.
+
+Future computer system designers will have to deal with increasingly unknown technology scaling curves. In practice this means dealing with almost random system parameters and constantly changing trade-offs regarding the use of resources. 
+
+The good news is that we can probably break down the problem by looking at individual trade-offs between pairs of parameters. What are the trade-offs that could emerge? 
+
+Parameters to consider:
+- memory/storage density, latency, device bandwidth, power/bit
+- network latency, energy/bit, bandwidth between all components, also within components
+- compute density
+- single-threaded performance
+- … ?
+
+
+Trade-offs and possible approaches:
+1. compute vs. memory capacity
+   a) standard time-space trade-off fits, quite a few algorithms (and data structures) depend on this
+   b) computation vs. memoization 
+   c) recompute vs. cash results
+   d) data replication (and cashing) - if memory is cheap
+   e) compute replication, i.e. near-memory processing - if compute is cheap (hardware-wise), it can be replicated next to each data partition.
+   f) compression -- if compute is cheap (operationally) and memory is pricy
+   g) disaggregation of memory and compute resources?
+
+Once the scaling stops, the performance of computation can still improve through specialization. However, there is nothing equivalent to improve on the memory side (except for compression, but to a much lesser extent), which may suggest that memory will be a more expensive resource. 
+
+2. Capacity vs. latency
+   a) This is the trade-off that caches go after. So, caching, if memory is plentiful
+   b) otherwise communicate
+
+
+3. Bandwidth vs. memory (storage) capacity
+  a) if memory is cheap and communication is costly --> cashing and replication
+  b) otherwise communicate
+ 
+4. Compute vs. latency
+
+5. Compute vs. bandwidth
+ 
+6. Bandwidth vs. latency
+

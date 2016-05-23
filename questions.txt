@@ -1,4 +1,3 @@
-Moore's law seems to be ending. What is precisely going to end?
 
 Technology scaling curves for many computer system components and their parameters directly follow the rate at which density of integrated circuits (ICs)improves over time. Examples include memory capacity and compute density. Other parameters, such as disk bandwidth or memory latency, have been following their own curves, benefiting from IC scaling to a much lesser extent. 
 
